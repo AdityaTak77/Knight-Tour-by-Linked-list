@@ -1,0 +1,29 @@
+# Knight-Tour-by-Linked-list
+
+Chess is one of the most interesting and oldest game. Even if you haven’t played chess lets make this easy and simple to understand. 
+This Knight’s tour problem defines that it can be possible to travel all the possible blocks of chess from the starting position of the chessboard.
+A Knight can move only in eight specific directions/blocks from its current location. Backtracking is basically recursion with undoing the recursive step if a solution for the given path does not exist. 
+
+Algorithm :
+1. Create a linked list to keep track of the path
+path = LinkedList()
+2. Define a recursive function to find a path from the current position
+function findPathFrom(position): 
+3. Add the current position to the path and mark it as visited
+ path.add(position)
+ position.visited = true
+4. If the current position is the destination, return true
+ if position == destination:
+ return true
+5. Try all possible moves from the current position
+ for move in position.possibleMoves: 
+6. If the move leads to an unvisited position, recursively try to find a path from there
+ if not move.visited:
+ if findPathFrom(move):
+ return true
+7.If no path is found, remove the current position from the path and mark it as unvisited
+ path.removeLast()
+ position.visited = false
+ return false
+8. Call the recursive function to find a path from the starting position
+findPathFrom(startingPosition)
